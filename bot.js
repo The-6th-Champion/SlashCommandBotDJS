@@ -34,31 +34,13 @@ client.on('ready', async () => {
             description: "Prefixes, info, and general usage of bots here",
         }
     })
-    await getApp(guildID).commands.post({
-        data: {
-            name: 'info',
-            description: 'sends an embed',
-            options: [
-                {
-                    name: "Name",
-                    description: 'Your username',
-                    required: true,
-                    type: 3
-                },
-                {
-                    name: "Age",
-                    description: 'Your age',
-                    required: false,
-                    type: 4
-                },
-            ]
-        }
-    })
+    
     /* To delete commands: 
     await getApp(guildID).commands('command_id').delete() 
     */
 
-    
+
+
     client.ws.on('INTERACTION_CREATE', async (interaction) => {
         const { name, options } = interaction.data
         const command = name.toLowerCase()
@@ -75,15 +57,6 @@ client.on('ready', async () => {
         switch(command) {
             case "ping":
                 reply(interaction, "pong");
-            case "info":
-                const embed = new Discord.MessageEmbed()
-                .setTitle("Info")
-
-                for (const arg in args) {
-                    const value = args[arg]
-                    embed.addField(arg, value)
-                }
-                reply(interaction, embed)
             case "botinfo":
                 const embed1 = new Discord.MessageEmbed()
                 .setTitle("Bot Info")
