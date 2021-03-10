@@ -172,3 +172,4 @@ const createAPIMEssage = async (interaction, content) => {
 }
 keepAlive();
 client.login(process.env.TOKEN);
+// commenting :)
