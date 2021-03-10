@@ -4,6 +4,7 @@ const client = new Discord.Client();
 const command = require('./command');
 const dotenv = require('dotenv').config();
 const guildID = '764927590070353940';
+const keepAlive = require('./server');
 
 
 const getApp = (guildID) => {
@@ -169,4 +170,5 @@ const createAPIMEssage = async (interaction, content) => {
     .resolveFiles()
     return { ...data, files }
 }
+keepAlive();
 client.login(process.env.TOKEN);
